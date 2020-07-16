@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
@@ -145,6 +146,24 @@ namespace SwaggerGlobalization.Infrastructure.Extensions
                     var locDescr = _localizer[descr];
                     if (locDescr != descr)
                         operation.Description = locDescr;
+                }
+
+                if(operation.Responses != null && operation.Responses.Count > 0)
+                {
+                    foreach(var r in operation.Responses)
+                    {
+                        var v = r.Value;
+                        if (v != null)
+                        {
+                            var desc = v.Description.RemoveNewLineAndTrim();
+                            if (!string.IsNullOrWhiteSpace(desc))
+                            {
+                                var loc = _localizer[desc];
+                                if (loc != desc)
+                                    v.Description = loc;
+                            }
+                        }
+                    }
                 }
             }
             else

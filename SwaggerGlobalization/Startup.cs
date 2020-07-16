@@ -142,7 +142,8 @@ namespace SwaggerGlobalization
                         doc.Load(xmlPath);
 
                         //localize comments
-                        var nodeList = doc.GetElementsByTagName("summary").Cast<XmlNode>().Concat<XmlNode>(doc.GetElementsByTagName("remarks").Cast<XmlNode>()).Concat<XmlNode>(doc.GetElementsByTagName("param").Cast<XmlNode>());
+                        var nodeList = doc.GetElementsByTagName("summary").Cast<XmlNode>().Concat<XmlNode>(doc.GetElementsByTagName("remarks").Cast<XmlNode>()).Concat<XmlNode>(doc.GetElementsByTagName("param").Cast<XmlNode>())
+                                        .Concat<XmlNode>(doc.GetElementsByTagName("response").Cast<XmlNode>());
 
                         foreach (XmlNode e in nodeList)
                         {

@@ -162,6 +162,9 @@
   <data name="swagger_remarks_test_update" xml:space="preserve">
     <value>Descrivi metodo.&lt;br /&gt;Altra descrizione.</value>
   </data>
+  <data name="swagger_response_200_test_update" xml:space="preserve">
+    <value>Risposta di test</value>
+  </data>
   <data name="swagger_summary_test_update" xml:space="preserve">
     <value>Api metodo di test.</value>
   </data>

@@ -34,6 +34,7 @@ namespace SwaggerGlobalization.Controllers
         ///</remarks>  
         /// <param name="request">swagger_param_test_update_request</param>
         /// <param name="id">swagger_param_test_update_id</param>
+        /// <response code="200">swagger_response_200_test_update</response>
         [HttpPost]
         [Route("Update/{id:int}")]
         public async Task<ActionResult<TestResponse>> Update(TestRequest request, [FromRoute] int id)
