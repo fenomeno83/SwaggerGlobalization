@@ -13,4 +13,4 @@ Based on configured supported cultures and default culture, you can:
 
 5-enables UI translation (it is not native in the newest swagger 3.x version, so I've creared a workaround system that changes text when specific dom node is loaded; it is not an elegant way, but it works!)
 
-Example include english and italian supported cultures
+Example includes english and italian supported cultures
