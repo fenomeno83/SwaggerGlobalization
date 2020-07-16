@@ -163,17 +163,7 @@ namespace SwaggerGlobalization
 
                 c.DocumentFilter<SwaggerAddEnumDescriptions>(); //enums custom management
 
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-               {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "JWT-Auth" }
-                        },
-                        new string[]{}
-                    }
-                });
-
+              
             });
 
             services.AddHttpContextAccessor();
