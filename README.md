@@ -2,6 +2,7 @@
 Solution that implements multilanguage documentation and UI translation in .Net core 3.1 swagger (Swashbuckle).
 
 Based on configured supported cultures and default culture, you can:
+
 1-enables accept-language header dropdown
 2-globalize enums by resources based on display attribute
 3-globalize swagger documentation
