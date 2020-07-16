@@ -23,7 +23,9 @@ var resource_globalization = {
     "MediaType": "Media type",
     "Download": "Download",
     "Close": "Close",
-    "AvailableAuth": "Available authorizations"
+    "AvailableAuth": "Available authorizations",
+    "Links": "Links",
+    "NoLinks": "No links"
 
 
 };

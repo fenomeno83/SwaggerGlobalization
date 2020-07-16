@@ -118,6 +118,14 @@ function allTranslation() {
         $(this).html(resource_globalization["Download"]);
     });
 
+    $.initialize('.col_header.response-col_links', function () {
+        $(this).html(resource_globalization["Links"]);
+    });
+
+    $.initialize('.response-col_links:not(.col_header)', function () {
+        $(this).find('i').html(resource_globalization["NoLinks"]);
+    });
+
 
 }
 

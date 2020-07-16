@@ -23,7 +23,9 @@ var resource_globalization = {
     "MediaType": "Tipo media",
     "Download": "Scarica",
     "Close": "Chiudi",
-    "AvailableAuth": "Autorizzazioni disponibili"
+    "AvailableAuth": "Autorizzazioni disponibili",
+    "Links": "Collegamenti",
+    "NoLinks": "Nessun collegamento"
 
 
 };
