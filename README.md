@@ -1,4 +1,4 @@
-# SwaggerGlobalization
+# Swagger Globalization
 Solution that implements multilanguage documentation and UI translation in .Net core 3.1 swagger (Swashbuckle 5).
 
 Based on configured supported cultures and default culture, you can:
