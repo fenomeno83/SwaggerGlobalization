@@ -1,0 +1,2 @@
+# SwaggerGlobalization
+Test
