@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 namespace SwaggerGlobalization
 {
    
+    public static class Messages
+    {
+        public const string EnumError = "Type T must inherit from System.Enum. Found: ";
+
+    }
     public static class SwaggerDescr
     {
         public const string SupportedLanguages = "Supported languages";

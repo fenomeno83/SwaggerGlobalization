@@ -89,23 +89,23 @@ namespace SwaggerGlobalization.Infrastructure.Managers
                 return value.ToString();
             }
         }
-        public List<KeyValueDto> ToList<T>(bool order = false, List<T> ElementsToRemove = null)
+        public List<KeyValueIntDto> ToList<T>(bool order = false, List<T> ElementsToRemove = null)
         {
 
             Type enumType = typeof(T);
             if (enumType.BaseType != typeof(System.Enum))
             {
-                throw new ArgumentException("Type T must inherit from System.Enum. Found: " + enumType.BaseType);
+                throw new ArgumentException(Messages.EnumError + enumType.BaseType);
             }
 
-            List<KeyValueDto> items = null;
+            List<KeyValueIntDto> items = null;
 
             if (order)
             {
                 var list = EnumExtension.SortEnum<T>();
                 items =
                   (from val in list
-                   select new KeyValueDto
+                   select new KeyValueIntDto
                    {
                        Value = _localizer[enumType.Name + "_" + val.ToString()],
                        Key = Convert.ToInt32(System.Enum.Parse(enumType, val.ToString()))/*.ToString()*/
@@ -115,7 +115,7 @@ namespace SwaggerGlobalization.Infrastructure.Managers
             {
                 items =
                   (from string n in System.Enum.GetNames(enumType)
-                   select new KeyValueDto
+                   select new KeyValueIntDto
                    {
                        Value = _localizer[enumType.Name + "_" + n.ToString()],
                        Key = Convert.ToInt32(System.Enum.Parse(enumType, n))/*.ToString()*/

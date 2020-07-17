@@ -10,7 +10,7 @@ namespace SwaggerGlobalization.Interfaces
     {
         string GetDisplayValue(Enum value);
         string GetDescription(Enum value);
-        List<KeyValueDto> ToList<T>(bool order = false, List<T> ElementsToRemove = null);
+        List<KeyValueIntDto> ToList<T>(bool order = false, List<T> ElementsToRemove = null);
         string GetDisplayValue(Type enumType, string value, bool originalValueIfFails = false);
 
     }
