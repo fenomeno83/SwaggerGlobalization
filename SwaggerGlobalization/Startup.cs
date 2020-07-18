@@ -121,8 +121,9 @@ namespace SwaggerGlobalization
                         c.ParameterFilter<XmlCommentsParameterFilter>(xmlDoc);
                         c.RequestBodyFilter<XmlCommentsRequestBodyFilter>(xmlDoc);
                         c.OperationFilter<XmlCommentsOperationFilter>(xmlDoc);
-                        c.ParameterFilter<CustomParameterFilter>();
-                        c.RequestBodyFilter<CustomRequestBodyFilter>();
+                        //commented because included in OperationFilter
+                        //c.ParameterFilter<CustomParameterFilter>();
+                        //c.RequestBodyFilter<CustomRequestBodyFilter>();
                     }
                 }
                 else

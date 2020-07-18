@@ -165,6 +165,33 @@ namespace SwaggerGlobalization.Infrastructure.Extensions
                         }
                     }
                 }
+
+                if (operation.RequestBody != null)
+                {
+                    var desc = operation.RequestBody.Description.RemoveNewLineAndTrim();
+                    if (!string.IsNullOrWhiteSpace(desc))
+                    {
+                        var loc = _localizer[desc];
+                        if (loc != desc)
+                            operation.RequestBody.Description = loc;
+                    }
+                }
+
+                if (operation.Parameters != null && operation.Parameters.Count > 0)
+                {
+                    foreach (var r in operation.Parameters)
+                    {
+
+                        var desc = r.Description.RemoveNewLineAndTrim();
+                        if (!string.IsNullOrWhiteSpace(desc))
+                        {
+                            var loc = _localizer[desc];
+                            if (loc != desc)
+                                r.Description = loc;
+                        }
+
+                    }
+                }
             }
             else
             {
