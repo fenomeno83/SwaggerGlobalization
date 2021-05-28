@@ -94,6 +94,7 @@ namespace SwaggerGlobalization.Infrastructure.Extensions
         private readonly IConfiguration _configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IStringLocalizer _localizer;
+        const string captureName = "routeParameter";
 
 
         public CustomOperationFilter(IConfiguration configuration, IHttpContextAccessor httpContextAccessor, IStringLocalizer<Resources> localizer)
@@ -148,9 +149,9 @@ namespace SwaggerGlobalization.Infrastructure.Extensions
                         operation.Description = locDescr;
                 }
 
-                if(operation.Responses != null && operation.Responses.Count > 0)
+                if (operation.Responses != null && operation.Responses.Count > 0)
                 {
-                    foreach(var r in operation.Responses)
+                    foreach (var r in operation.Responses)
                     {
                         var v = r.Value;
                         if (v != null)
@@ -203,31 +204,57 @@ namespace SwaggerGlobalization.Infrastructure.Extensions
 
 
 
-            if (!enablesAccLang || list == null || list.Count == 0)
+            if (enablesAccLang && list != null && list.Count > 0)
+            {
+
+                if (!string.IsNullOrWhiteSpace(defaultCulture)) //put default culture in the first position
+                    list.Move(x => x.ToLower().Trim() == defaultCulture.Trim().ToLower(), 0);
+
+
+                if (operation.Parameters == null)
+                    operation.Parameters = new List<OpenApiParameter>();
+
+                operation.Parameters.Add(new OpenApiParameter
+                {
+                    Name = "accept-language",
+                    In = ParameterLocation.Header,
+                    Required = true,
+                    Description = enableLocalizedDoc ? _localizer["supported_languages"] : SwaggerDescr.SupportedLanguages,
+
+                    Schema = new OpenApiSchema
+                    {
+                        Type = "string",
+                        Enum = list.Select(value => (IOpenApiAny)new OpenApiString(value))
+                                            .ToList()
+                    }
+
+                });
+            }
+
+            var httpMethodAttributes = context.MethodInfo
+                .GetCustomAttributes(true)
+                .OfType<Microsoft.AspNetCore.Mvc.RouteAttribute>();
+
+            var httpMethodWithOptional = httpMethodAttributes?.FirstOrDefault(m => m.Template != null && m.Template.Contains("?"));
+            if (httpMethodWithOptional == null)
                 return;
 
-            if (!string.IsNullOrWhiteSpace(defaultCulture)) //put default culture in the first position
-                list.Move(x => x.ToLower().Trim() == defaultCulture.Trim().ToLower(), 0);
+            string regex = $"{{(?<{captureName}>\\w+)\\?}}";
 
+            var matches = System.Text.RegularExpressions.Regex.Matches(httpMethodWithOptional.Template, regex);
 
-            if (operation.Parameters == null)
-                operation.Parameters = new List<OpenApiParameter>();
-
-            operation.Parameters.Add(new OpenApiParameter
+            foreach (System.Text.RegularExpressions.Match match in matches)
             {
-                Name = "accept-language",
-                In = ParameterLocation.Header,
-                Required = true,
-                Description = enableLocalizedDoc ? _localizer["supported_languages"] : SwaggerDescr.SupportedLanguages,
+                var name = match.Groups[captureName].Value;
 
-                Schema = new OpenApiSchema
+                var parameter = operation.Parameters.FirstOrDefault(p => p.In == ParameterLocation.Path && p.Name == name);
+                if (parameter != null)
                 {
-                    Type = "string",
-                    Enum = list.Select(value => (IOpenApiAny)new OpenApiString(value))
-                                        .ToList()
+                    parameter.AllowEmptyValue = true;
+                    parameter.Required = false;
+                    parameter.Schema.Nullable = true;
                 }
-
-            });
+            }
 
 
         }

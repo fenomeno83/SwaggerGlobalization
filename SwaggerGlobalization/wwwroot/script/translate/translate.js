@@ -63,12 +63,13 @@ function allTranslation() {
     $.initialize('button.authorize.modal-btn.auth', function () {
         $(this).html(resource_globalization["Authorize"]);
 
-        $(this).closest('.modal-ux-inner').find('.modal-ux-header > h3').html(resource_globalization["AvailableAuth"]);
-
     });
+
 
     $.initialize('.btn-done.modal-btn.auth', function () {
         $(this).html(resource_globalization["Close"]);
+        $(this).closest('.modal-ux-inner').find('.modal-ux-header > h3').html(resource_globalization["AvailableAuth"]);
+
     });
 
     $.initialize('.parameter__enum ', function () {
@@ -114,6 +115,10 @@ function allTranslation() {
         $(this).html(resource_globalization["MediaType"]);
     });
 
+    $.initialize('.parameter__empty_value_toggle', function () {
+        $(this).html('<input type="checkbox" value="on">' + resource_globalization["SendEmptyValue"])
+    });
+
     $.initialize('.download-contents', function () {
         $(this).html(resource_globalization["Download"]);
     });
@@ -146,7 +151,7 @@ $(document).ready(function () {
 
                     initialTranslation(lbl.find('span'));
                     allTranslation();
-                   
+
                 };
             }
 
@@ -158,7 +163,7 @@ $(document).ready(function () {
                     script.onload = function () {
                         initialTranslation($(sel).prev('span'));
 
-                      
+
                     };
                 }
             });
@@ -167,17 +172,17 @@ $(document).ready(function () {
     }
     else {
         $.initialize('label.select-label', function () {
-                      
-           var lbl = $(this);
-               
+
+            var lbl = $(this);
+
             initialTranslation(lbl.find('span'));
             allTranslation();
-    
+
         });
     }
 
-   
 
-    
+
+
 
 });

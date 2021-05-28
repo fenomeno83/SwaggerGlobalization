@@ -9,6 +9,8 @@ namespace SwaggerGlobalization
     public static class Messages
     {
         public const string EnumError = "Type T must inherit from System.Enum. Found: ";
+        public const string NoStringInSubstrings = "Unable to split string into substrings.";
+
 
     }
     public static class SwaggerDescr

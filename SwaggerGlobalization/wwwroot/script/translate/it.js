@@ -25,7 +25,9 @@ var resource_globalization = {
     "Close": "Chiudi",
     "AvailableAuth": "Autorizzazioni disponibili",
     "Links": "Collegamenti",
-    "NoLinks": "Nessun collegamento"
+    "NoLinks": "Nessun collegamento",
+    "SendEmptyValue": "Invia valore vuoto"
+
 
 
 };
