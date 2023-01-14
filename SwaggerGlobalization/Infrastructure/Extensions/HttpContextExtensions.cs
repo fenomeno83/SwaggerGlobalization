@@ -27,6 +27,43 @@ namespace SwaggerGlobalization.Infrastructure.Extensions
             return bodyText;
         }
 
+        public static string GetHasCatchError(this HttpContext context)
+        {
+            return context.GetContextItem(ApiConstants.HasCatchError);
+
+        }
+
+        public static void SetHasCatchError(this HttpContext context, string catchError)
+        {
+            context.SetContextItem(ApiConstants.HasCatchError, catchError);
+        }
+
+        public static void SetContextItem(this HttpContext context, string itemName, string value)
+        {
+            if (!string.IsNullOrWhiteSpace(itemName) && !string.IsNullOrWhiteSpace(value))
+                context.Items[itemName] = value;
+        }
+
+        public static void RemoveContextItem(this HttpContext context, string itemName)
+        {
+            if (!string.IsNullOrWhiteSpace(itemName) && context.Items != null)
+                context.Items.Remove(itemName);
+        }
+
+        public static string GetContextItem(this HttpContext context, string itemName)
+        {
+            if (string.IsNullOrWhiteSpace(itemName))
+                return null;
+
+            context.Items.TryGetValue(itemName, out var value);
+
+            if (value == null)
+                return null;
+            else
+                return value.ToString();
+
+        }
+
         public static JToken GetBodyObject(this HttpContext HttpContext)
         {
             string body = HttpContext.GetBodyString();

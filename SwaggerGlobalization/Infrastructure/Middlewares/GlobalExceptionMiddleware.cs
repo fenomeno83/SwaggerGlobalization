@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System.Net;
+using SwaggerGlobalization.Infrastructure.Extensions;
+using Newtonsoft.Json.Serialization;
 
 namespace SwaggerGlobalization.Infrastructure.Middlewares
 {
@@ -23,15 +25,19 @@ namespace SwaggerGlobalization.Infrastructure.Middlewares
                     if (contextFeature != null)
                     {
 
-                       
+                        context.SetHasCatchError("1");
+
                         await context.Response.WriteAsync(JsonConvert.SerializeObject(new BaseResponse
                         {
                             Error = new Error()
                             {
-                                ErrorCode = (int)HttpStatusCode.BadRequest,
-                                ErrorMessage = contextFeature.Error.Message
+                                ErrorCode = (int)HttpStatusCode.InternalServerError,
+                                ErrorMessage = contextFeature.Error?.Message
                             },
                             RequestStatus = RequestStatus.KO.ToString()
+                        }, new JsonSerializerSettings //add this if you want camelcase response; remove in case of pascal case
+                        {
+                            ContractResolver = new CamelCasePropertyNamesContractResolver()
                         }
                         ));
                     }

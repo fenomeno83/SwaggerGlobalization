@@ -63,11 +63,11 @@ namespace SwaggerGlobalization
                     .AddNewtonsoftJson(
                             options =>
                             {
-                                options.SerializerSettings.ContractResolver = new DefaultContractResolver(); //enable pascal case
+                                //options.SerializerSettings.ContractResolver = new DefaultContractResolver(); //enable pascal case
                                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
                                 options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
                             })
-                    .AddJsonOptions(opt => opt.JsonSerializerOptions.PropertyNamingPolicy = null) //enable pascal case in swagger
+                    //.AddJsonOptions(opt => opt.JsonSerializerOptions.PropertyNamingPolicy = null) //enable pascal case in swagger
                     .AddDataAnnotationsLocalization //model data annotation/validation using localization resources
                     (
                         options =>

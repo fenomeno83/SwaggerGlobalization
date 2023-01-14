@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using SwaggerGlobalization.Infrastructure.Extensions;
+using Newtonsoft.Json.Serialization;
 
 namespace SwaggerGlobalization.Infrastructure.Middlewares
 {
@@ -29,19 +31,26 @@ namespace SwaggerGlobalization.Infrastructure.Middlewares
             //manage error status
             if (context.Response.StatusCode >= StatusCodes.Status400BadRequest)
             {
-                context.Response.ContentType = "application/json";
-
-               
-                await context.Response.WriteAsync(JsonConvert.SerializeObject(new BaseResponse
+                if (context.Response.ContentLength == null && !(context.GetHasCatchError() == "1"))
                 {
-                    Error = new Error()
+                    if (context.Response.ContentType.NullableTrim(false, string.Empty) != "application/json")
+                        context.Response.ContentType = "application/json";
+
+
+                    await context.Response.WriteAsync(JsonConvert.SerializeObject(new BaseResponse
                     {
-                        ErrorCode = context.Response.StatusCode,
-                        ErrorMessage = ((HttpStatusCode)context.Response.StatusCode).ToString()
-                    },
-                    RequestStatus = RequestStatus.KO.ToString()
+                        Error = new Error()
+                        {
+                            ErrorCode = context.Response.StatusCode,
+                            ErrorMessage = ((HttpStatusCode)context.Response.StatusCode).ToString()
+                        },
+                        RequestStatus = RequestStatus.KO.ToString()
+                    }, new JsonSerializerSettings //add this if you want camelcase response; remove in case of pascal case
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver()
+                    }
+                        ));
                 }
-                ));
             }
         }
 

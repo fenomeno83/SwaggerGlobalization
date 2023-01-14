@@ -28,4 +28,11 @@ namespace SwaggerGlobalization
         public const string RequiredAllIfOneIsNotNull = "All fields between {0} are required if at least one is not null.";
 
     }
+
+    public static class ApiConstants
+    {
+       
+        public const string HasCatchError = "HAS_CATCH_ERROR";
+
+    }
 }
