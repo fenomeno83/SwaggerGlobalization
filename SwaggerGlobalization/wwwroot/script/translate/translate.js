@@ -48,6 +48,20 @@ function allTranslation() {
         $(this).html(resource_globalization["Cancel"]);
     });
 
+
+    $(document).click(function () {
+        var targ = $(event.target);
+
+        if (targ.is(".btn.try-out__btn.cancel")) {
+            targ.text(resource_globalization["Cancel"]);
+        }
+
+        if (targ.is(".btn.try-out__btn") && !targ.hasClass("cancel")) {
+            targ.text(resource_globalization["TryItOut"]);
+        }
+
+    });
+
     $.initialize('button.execute', function () {
         $(this).html(resource_globalization["Execute"]);
     });
