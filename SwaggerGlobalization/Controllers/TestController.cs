@@ -8,6 +8,7 @@ using SwaggerGlobalization.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Net;
+using Microsoft.AspNetCore.Http;
 
 namespace SwaggerGlobalization.Controllers
 {
@@ -35,6 +36,9 @@ namespace SwaggerGlobalization.Controllers
         /// <param name="request">swagger_param_test_update_request</param>
         /// <param name="id">swagger_param_test_update_id</param>
         /// <response code="200">swagger_response_200_test_update</response>
+        /// <response code="400">swagger_response_400</response>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BaseResponse))]
         [HttpPost]
         [Route("Update/{id:int}")]
         public async Task<ActionResult<TestResponse>> Update(TestRequest request, [FromRoute] int id)

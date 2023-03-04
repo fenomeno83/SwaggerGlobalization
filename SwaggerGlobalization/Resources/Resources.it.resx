@@ -165,6 +165,9 @@
   <data name="swagger_response_200_test_update" xml:space="preserve">
     <value>Risposta di test</value>
   </data>
+  <data name="swagger_response_400" xml:space="preserve">
+    <value>Richiesta malformata</value>
+  </data>
   <data name="swagger_summary_test_update" xml:space="preserve">
     <value>Api metodo di test.</value>
   </data>

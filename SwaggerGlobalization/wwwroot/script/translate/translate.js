@@ -106,6 +106,23 @@ function allTranslation() {
         $(this).prev('h4').html(resource_globalization["RequestUrl"]);
     });
 
+    $.initialize('.renderedMarkdown > p', function () {
+        if ($(this).html().startsWith("Error: response status is")) {
+            $(this).html($(this).html().replace("Error: response status is", resource_globalization["ResponseStatusId"]));
+
+        }
+    });
+
+    $.initialize("button[data-name='example']", function () {
+        $(this).html(resource_globalization["ExampleValue"]);
+    });
+
+    $.initialize("button[data-name='model']", function () {
+        $(this).html(resource_globalization["Schema"]);
+    });
+
+
+
     $.initialize('table.responses-table.live-responses-table', function () {
         $(this).prev('h4').html(resource_globalization["ServerResponse"]);
         $(this).find('tr.responses-header > td.response-col_status').html(resource_globalization["Code"]);

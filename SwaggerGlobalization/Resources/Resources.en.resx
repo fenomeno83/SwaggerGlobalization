@@ -165,6 +165,9 @@
   <data name="swagger_response_200_test_update" xml:space="preserve">
     <value>Test response</value>
   </data>
+  <data name="swagger_response_400" xml:space="preserve">
+    <value>Bad request</value>
+  </data>
   <data name="swagger_summary_test_update" xml:space="preserve">
     <value>Api test method.</value>
   </data>

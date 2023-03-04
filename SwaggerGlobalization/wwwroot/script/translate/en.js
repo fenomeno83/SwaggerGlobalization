@@ -26,7 +26,13 @@ var resource_globalization = {
     "AvailableAuth": "Available authorizations",
     "Links": "Links",
     "NoLinks": "No links",
-    "SendEmptyValue": "Send empty value"
+    "SendEmptyValue": "Send empty value",
+    "ResponseStatusId": "Error: response status is",
+    "ExampleValue": "Example Value",
+    "Schema": "Schema"
+
+
+
 
 
 };

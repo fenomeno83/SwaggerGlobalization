@@ -26,7 +26,11 @@ var resource_globalization = {
     "AvailableAuth": "Autorizzazioni disponibili",
     "Links": "Collegamenti",
     "NoLinks": "Nessun collegamento",
-    "SendEmptyValue": "Invia valore vuoto"
+    "SendEmptyValue": "Invia valore vuoto",
+    "ResponseStatusId": "Errore: il codice risposta &egrave;",
+    "ExampleValue": "Valore esempio",
+    "Schema": "Schema"
+
 
 
 
