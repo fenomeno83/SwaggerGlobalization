@@ -48,6 +48,38 @@ function allTranslation() {
         $(this).html(resource_globalization["Cancel"]);
     });
 
+    $.initialize('button.models-control > span', function () {
+        $(this).html(resource_globalization["Schemas"]);
+    });
+
+
+
+
+    //ugly but no alternatives
+    $.initialize('.renderedMarkdown > p', function () {
+        if ($(this).html().startsWith("Error: response status is")) {
+            $(this).html($(this).html().replace("Error: response status is", resource_globalization["ResponseStatusId"]));
+
+        }
+    });
+
+    $.initialize('div.validation-errors.errors-wrapper', function () {
+
+        if ($(this).html().startsWith("Please correct the following validation errors and try again.")) {
+            $(this).html($(this).html().replace("Please correct the following validation errors and try again.", resource_globalization["ValidationError"]));
+
+            var p = $(this).find('ul > li');
+            p.each(function () {             
+                if ($(this).html().includes("Required field is not provided")) {
+                    $(this).html($(this).html().replace("Required field is not provided", resource_globalization["RequiredField"]));
+                }
+            });
+            
+        }
+    });
+
+
+
 
     $(document).click(function () {
         var targ = $(event.target);
@@ -106,12 +138,7 @@ function allTranslation() {
         $(this).prev('h4').html(resource_globalization["RequestUrl"]);
     });
 
-    $.initialize('.renderedMarkdown > p', function () {
-        if ($(this).html().startsWith("Error: response status is")) {
-            $(this).html($(this).html().replace("Error: response status is", resource_globalization["ResponseStatusId"]));
 
-        }
-    });
 
     $.initialize("button[data-name='example']", function () {
         $(this).html(resource_globalization["ExampleValue"]);

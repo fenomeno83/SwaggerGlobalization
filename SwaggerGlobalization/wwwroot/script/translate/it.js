@@ -29,7 +29,11 @@ var resource_globalization = {
     "SendEmptyValue": "Invia valore vuoto",
     "ResponseStatusId": "Errore: il codice risposta &egrave;",
     "ExampleValue": "Valore esempio",
-    "Schema": "Schema"
+    "Schema": "Schema",
+    "Schemas": "Schemi",
+    "ValidationError": "Perfavore, correggi i seguenti errori di validazione e riprova di nuovo.",
+    "RequiredField": "Il campo obbligatorio non &egrave; stato compilato"
+
 
 
 
