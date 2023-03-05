@@ -135,7 +135,13 @@ function allTranslation() {
     });
 
     $.initialize('.request-url', function () {
-        $(this).prev('h4').html(resource_globalization["RequestUrl"]);
+        $(this).children().first().html(resource_globalization["RequestUrl"]);
+
+
+    });
+
+    $.initialize('.view-line-link.copy-to-clipboard', function () {
+        $(this).attr("title", resource_globalization["CopyClipboard"]);
     });
 
 

@@ -29,10 +29,9 @@ var resource_globalization = {
     "SendEmptyValue": "Send empty value",
     "ResponseStatusId": "Error: response status is",
     "ExampleValue": "Example Value",
-    "Schema": "Schema",
-    "Schemas": "Schemas",
     "ValidationError": "Please correct the following validation errors and try again.",
-    "RequiredField": "Required field is not provided"
+    "RequiredField": "Required field is not provided",
+    "CopyClipboard" : "Copy to clipboard"
 
 
 
