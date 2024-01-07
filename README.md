@@ -1,5 +1,5 @@
 # Swagger Globalization
-Solution that implements multilanguage documentation and UI translation in .Net 7 swagger (Swashbuckle 6).
+Solution that implements multilanguage documentation and UI translation in .Net 8 swagger (Swashbuckle 6).
 
 Based on configured supported cultures and default culture, you can:
 
