@@ -153,11 +153,6 @@ services.AddBusinessServices();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-}
-
 app.UseBaseMiddleware();
 
 //give services access also to static methods, where you can't use dependency injection. You shouldn't use it. Prefer dependecy injection and services methods
