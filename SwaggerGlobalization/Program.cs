@@ -145,6 +145,8 @@ services.AddSwaggerGen(c =>
 
 });
 
+services.AddSwaggerGenNewtonsoftSupport();
+
 services.AddHttpContextAccessor();
 
 services.AddSingleton<IEnumsManager, EnumsManager>();
