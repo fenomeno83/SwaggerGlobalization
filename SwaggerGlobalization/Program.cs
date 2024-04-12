@@ -197,7 +197,7 @@ app.UseSwaggerUI(c =>
         }
 
         if (enableUITranslation)
-            c.HeadContent = "<script src='./script/jquery-3.6.3.min.js'></script><script src='./script/jquery.initialize.min.js'></script><script src='./script/translate/translate.js'></script>";
+            c.HeadContent = "<script src='./script/jquery-3.7.1.min.js'></script><script src='./script/jquery.initialize.min.js'></script><script src='./script/translate/translate.js'></script>";
 
     }
     else
@@ -205,7 +205,7 @@ app.UseSwaggerUI(c =>
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger");
 
         if (!string.IsNullOrWhiteSpace(defaultCulture) && enableUITranslation)
-            c.HeadContent = "<script src='./script/jquery-3.6.3.min.js'></script><script src='./jscript/query.initialize.min.js'></script><script id='languagefile' src='./script/translate/" + defaultCulture.Trim() + ".js'></script><script src='./script/translate/translate.js'></script>";
+            c.HeadContent = "<script src='./script/jquery-3.7.1.min.js'></script><script src='./jscript/query.initialize.min.js'></script><script id='languagefile' src='./script/translate/" + defaultCulture.Trim() + ".js'></script><script src='./script/translate/translate.js'></script>";
     }
 
     c.RoutePrefix = string.Empty;

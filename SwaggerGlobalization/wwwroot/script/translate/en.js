@@ -33,9 +33,4 @@ var resource_globalization = {
     "RequiredField": "Required field is not provided",
     "CopyClipboard" : "Copy to clipboard"
 
-
-
-
-
-
 };

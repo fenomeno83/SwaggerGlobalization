@@ -33,8 +33,4 @@ var resource_globalization = {
     "RequiredField": "Il campo obbligatorio non &egrave; stato compilato",
     "CopyClipboard" : "Copia negli appunti"
 
-
-
-
-
 };

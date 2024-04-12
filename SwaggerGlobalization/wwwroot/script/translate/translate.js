@@ -81,7 +81,7 @@ function allTranslation() {
 
 
 
-    $(document).click(function () {
+    $(document).on("click", function (event) {
         var targ = $(event.target);
 
         if (targ.is(".btn.try-out__btn.cancel")) {
@@ -199,7 +199,7 @@ function allTranslation() {
 }
 
 
-$(document).ready(function () {
+$(function () {
 
     if ($('script[id="languagefile"]').length == 0) {
         $.initialize('label.select-label', function () {
@@ -219,7 +219,7 @@ $(document).ready(function () {
                 };
             }
 
-            $(sel).change(function () {
+            $(sel).on("change", function () {
                 $('script[id="languagefile"]').remove();
                 var lang = getQueryStringParams($(this).val(), 'lang');
                 if (lang != null && lang != "") {
